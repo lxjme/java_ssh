@@ -1,5 +1,7 @@
 package com.lxj.pojo;
 
+import java.util.List;
+
 /**
  * Product
  */
@@ -7,6 +9,7 @@ public class Product {
     private int id;
     private String p_name;
     private String price;
+    private List<Product> ps;
 
     /**
      * @return the id
@@ -48,6 +51,20 @@ public class Product {
      */
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    /**
+     * @return the ps
+     */
+    public List<Product> getPs() {
+        return ps;
+    }
+
+    /**
+     * @param ps the ps to set
+     */
+    public void setPs(List<Product> ps) {
+        this.ps = ps;
     }
 
 }

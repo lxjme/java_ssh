@@ -1,5 +1,8 @@
 package com.lxj.action;
 
+import java.util.List;
+
+import com.lxj.dao.ProductDao;
 import com.lxj.pojo.Product;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -21,9 +24,13 @@ public class ProductAction {
     @Action("showProduct")
     public String show() {
 
+        List<Product> ps = new ProductDao().pList();
+
         product = new Product();
         product.setP_name("iphone888");
+        product.setPs(ps);
 
+        System.out.println(product.getPs());
         return "show";
     }
 
