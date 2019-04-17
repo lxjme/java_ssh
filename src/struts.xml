@@ -4,10 +4,12 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
  
 <struts>
-  <package name="basicstruts" extends="struts-default">
-      <!-- <action name="showProduct" class="com.lxj.action.ProductAction" method="show">
-          <result name="show">template/show.jsp</result>
-      </action>     -->
-</package>
- 
+    <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+    <constant name="struts.objectFactory" value="spring"/>
+
+    <package name="basicstruts" extends="struts-default">
+        <!-- <action name="listProduct" class="productActionBean" method="show">
+            <result name="show">template/product.jsp</result>
+        </action>     -->
+    </package>
 </struts>

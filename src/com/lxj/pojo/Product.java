@@ -2,14 +2,30 @@ package com.lxj.pojo;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Product
  */
+@Entity
+@Table(name = "t_product")
 public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "p_name")
     private String p_name;
+
+    @Column(name = "p_price")
     private String price;
-    private List<Product> ps;
 
     /**
      * @return the id
@@ -51,20 +67,6 @@ public class Product {
      */
     public void setPrice(String price) {
         this.price = price;
-    }
-
-    /**
-     * @return the ps
-     */
-    public List<Product> getPs() {
-        return ps;
-    }
-
-    /**
-     * @param ps the ps to set
-     */
-    public void setPs(List<Product> ps) {
-        this.ps = ps;
     }
 
 }
