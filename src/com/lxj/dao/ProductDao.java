@@ -9,4 +9,6 @@ import com.lxj.pojo.Product;
  */
 public interface ProductDao {
     public List<Product> pList(int page);
+
+    int getTotal();
 }

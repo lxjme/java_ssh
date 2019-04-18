@@ -9,4 +9,6 @@ import com.lxj.pojo.Product;
  */
 public interface ProductService {
     List<Product> list(int page);
+
+    int getTotal();
 }

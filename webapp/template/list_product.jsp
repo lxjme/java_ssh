@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" import="java.util.*,com.lxj.util.*"%>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
@@ -35,19 +35,66 @@
             </tbody>
         </table>
         <br>
+      
         <nav aria-label="...">
             <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
-                <li class="page-item active">
-                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
                 <li class="page-item">
-                <a class="page-link" href="#">Next</a>
+                    <a class="page-link" href="?page=1">首页</a>
                 </li>
+                <%
+                    PageUtil pageUtil = (PageUtil) request.getAttribute("pageUtil");
+                    if(pageUtil.getCrt_page() == 1) {
+                %>
+                
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">上一页</a>
+                        </li>
+                <%
+                    } else {
+                %>
+
+                        <li class="page-item">
+                            <a class="page-link" href="?page=<%=pageUtil.getCrt_page()-1%>" tabindex="-1">上一页</a>
+                        </li>
+                <%
+                    }
+                %>
+                
+
+                <%
+                    for(int i=1; i<=pageUtil.getTotal_page(); i++) {
+                        if(pageUtil.getCrt_page() == i) {
+                %>
+                            <li class="page-item active">
+                                <a class="page-link" href="#"><%=i%> <span class="sr-only">(current)</span></a>
+                            </li>
+                <%
+                        } else {
+                %>
+                            <li class="page-item"><a class="page-link" href="?page=<%=i%>"><%=i%></a></li>
+                <%     
+                    }
+                        }
+                    
+                    if(pageUtil.getCrt_page() == pageUtil.getTotal_page()) {
+                %>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">下一页</a>
+                        </li>
+                <%
+                
+                    } else {
+                %>
+                        <li class="page-item">
+                            <a class="page-link" href="?page=<%=pageUtil.getCrt_page()+1%>">下一页</a>
+                        </li>
+                <%
+                    }
+                %>
+                <li class="page-item">
+                    <a class="page-link" href="?page=<%=pageUtil.getTotal_page()%>">尾页</a>
+                </li>
+                
             </ul>
         </nav>
     </div>

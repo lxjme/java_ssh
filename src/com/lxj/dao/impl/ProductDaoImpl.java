@@ -48,4 +48,16 @@ public class ProductDaoImpl extends HibernateTemplate implements ProductDao {
 
         return ps;
     }
+
+    @Override
+    /**
+     * 获取总数
+     */
+    public int getTotal() {
+        List<Long> l = find("select count(*) from Product");
+        if (l.isEmpty()) {
+            return 0;
+        }
+        return l.get(0).intValue();
+    }
 }

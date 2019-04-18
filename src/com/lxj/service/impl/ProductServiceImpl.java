@@ -27,18 +27,9 @@ public class ProductServiceImpl implements ProductService {
         return ps;
     }
 
-    /**
-     * @return the productDao
-     */
-    public ProductDao getProductDao() {
-        return productDao;
-    }
-
-    /**
-     * @param productDao the productDao to set
-     */
-    public void setProductDao(ProductDao productDao) {
-        this.productDao = productDao;
+    @Override
+    public int getTotal() {
+        return productDao.getTotal();
     }
 
 }
